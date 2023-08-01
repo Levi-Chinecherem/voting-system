@@ -1,0 +1,30 @@
+<!-- candidate_list.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Voting System - Candidates{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h2>List of Candidates</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% for candidate in candidates %}
+                    <div class="col">
+                        <div class="card">
+                            <img src="{{ candidate.image.url }}" class="card-img-top img-fluid" alt="{{ candidate.name }}" style="width: inherit; height: 300px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ candidate.name }}</h5>
+                                <p class="card-text">{{ candidate.details }}</p>
+                                <p class="card-text">Position: {{ candidate.position.position }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

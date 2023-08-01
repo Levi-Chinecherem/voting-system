@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Voting System - Vote{% endblock %}
+
+{% block content %}
+    <!-- Add your colorful and responsive content here -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2>Vote for Your Preferred Candidate</h2>
+                <form method="post" class="mt-4">
+                    {% csrf_token %}
+                    {% for position in active_positions %}
+                        {% if position.candidate_set.exists %}
+                            <div class="position-section mb-4">
+                                <h3 class="mb-3">{{ position.position }} ({{ position.start_date|date:'M d, Y' }} - {{ position.end_date|date:'M d, Y' }})</h3>
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                    {% for candidate in position.candidate_set.all %}
+                                        <div class="col text-center">
+                                            <div class="card h-100">
+                                                <div class="col-md-3 text-center" style="width: inherit; padding: 12px;">
+                                                    <img src="{{ candidate.image.url }}" class="rounded-circle" alt="{{ candidate.name }}" style="width: 150px; height: 150px; object-fit: cover;">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ candidate.name }}</h5>
+                                                    <p class="card-text">{{ candidate.position }}</p>
+                                                    <p class="card-text">{{ candidate.details }}</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    {% if position.id in user_votes %}
+                                                        <p class="text-success">You have already voted for this position.</p>
+                                                    {% else %}
+                                                        <div class="form-check" style="width: 40%; padding-left: 45%;">
+                                                            <input class="form-check-input" type="checkbox" name="candidate_{{ position.id }}" id="candidate_{{ candidate.id }}" value="{{ candidate.id }}">
+                                                            <label class="form-check-label" for="candidate_{{ candidate.id }}">
+                                                                Vote
+                                                            </label>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="col-md-3" style="width: inherit; display:flex; justify-content: end; align-items: center;">
+                        <button type="submit" class="btn btn-primary mt-3">Vote</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

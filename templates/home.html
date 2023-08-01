@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Voting System - Home{% endblock %}
+
+{% block content %}
+    <!-- Add your colorful and responsive content here -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2>Welcome to School Voting System</h2>
+            <p>
+                School Voting System is an automated platform where students and staff can participate in voting for their preferred candidates.
+                The system ensures a fair and transparent voting process.
+            </p>
+            
+            <h4>Voting Period:</h4>
+            <p>
+                The voting period for each position is specified in the system. Users can only vote during the active voting
+                period for each position. Once the voting period for a position ends, voting for that position will be closed.
+            </p>
+
+            <p>
+                To start voting, please log in using your registered account or register for a new account if you haven't already.
+            </p>
+            <a class="btn btn-primary" href="{% url 'account_login' %}">Login</a>
+            <a class="btn btn-success" href="{% url 'account_signup' %}">Register</a>
+        </div>
+    </div>
+
+    <!-- System Details -->
+    <div class="mt-5">
+        <h3>System Details</h3>
+        <p>
+            The School Voting System is built using the Django web framework and the Bootstrap front-end framework.
+            It provides an easy-to-use interface for students and staff to cast their votes for candidates vying for various positions in the school.
+        </p>
+        <p>
+            The system has the following features:
+            <ul>
+                <li>User authentication and registration using Django-Allauth, with options to login via Gmail and Facebook.</li>
+                <li>Displaying a list of candidates with their images, names, positions, and details.</li>
+                <li>Allowing users to vote for their preferred candidate.</li>
+                <li>Showing voting results with the number of votes and percentage for each candidate.</li>
+                <li>Preventing users from voting more than once and after the voting period has closed.</li>
+            </ul>
+        </p>
+    </div>
+
+    <!-- How to Use -->
+    <div class="mt-5">
+        <h3>How to Use</h3>
+        <p>
+            Follow the steps below to use the School Voting System:
+            <ol>
+                <li>Register: If you don't have an account, click on the "Register" link in the navigation bar and create a new account.</li>
+                <li>Login: Once registered, use your email and password to log in to your account.</li>
+                <li>View Candidates: After logging in, navigate to the "Candidates" page to view the list of candidates running for various positions.</li>
+                <li>Vote: Click on the "Vote" link in the navigation bar to cast your vote for your preferred candidate.</li>
+                <li>View Results: After the voting period has ended, you can check the "Results" page to see the voting results and the winner for each position.</li>
+            </ol>
+        </p>
+    </div>
+{% endblock %}

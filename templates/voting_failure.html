@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Voting System - Voting Failure{% endblock %}
+
+{% block content %}
+    <!-- Add your colorful and responsive content here -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2>Voting Failed</h2>
+            <p class="mt-4">Please select a candidate to vote for.</p>
+            <a href="{% url 'vote' %}" class="btn btn-primary mt-3">Back to Voting</a>
+        </div>
+    </div>
+{% endblock %}
