@@ -3,6 +3,8 @@
 
 The Voting System is a web-based application built with Django that allows users to vote for their preferred candidates based on different positions. The system provides a user-friendly interface for voting, displaying candidate details, and presenting the voting results.
 
+![sample image](https://github.com/Levi-Chinecherem/voting-system/blob/master/sample.PNG)
+
 ## Features
 
 - User Registration and Authentication: Users can sign up and log in to access the voting system.
